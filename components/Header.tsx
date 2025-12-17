@@ -17,10 +17,20 @@ const Header: React.FC = () => {
 
   const navLinks = [
     { name: 'Início', href: '#hero' },
-    { name: 'Portfólio', href: '#portfolio' },
     { name: 'Sobre', href: '#about' },
+    { name: 'Portfólio', href: '#portfolio' },
     { name: 'Contato', href: '#contact' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      setIsMobileMenuOpen(false);
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header 
@@ -30,7 +40,11 @@ const Header: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <a href="#" className="hover:opacity-80 transition-opacity">
+          <a 
+            href="#hero" 
+            className="hover:opacity-80 transition-opacity"
+            onClick={(e) => handleNavClick(e, '#hero')}
+          >
             <Logo className="h-10" color={isScrolled ? undefined : 'white'} />
           </a>
 
@@ -40,6 +54,7 @@ const Header: React.FC = () => {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`text-sm font-semibold uppercase tracking-wider transition-colors ${
                   isScrolled ? 'text-wood-800 hover:text-wood-500' : 'text-white/90 hover:text-white'
                 }`}
@@ -85,7 +100,7 @@ const Header: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 className="text-wood-800 font-semibold text-lg py-2 border-b border-gray-100"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.name}
               </a>

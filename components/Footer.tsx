@@ -2,6 +2,14 @@ import React from 'react';
 import { Logo } from './Logo';
 
 const Footer: React.FC = () => {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="bg-slate-950 text-white py-12 border-t border-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
@@ -13,10 +21,10 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="flex gap-8 text-sm text-gray-400">
-          <a href="#hero" className="hover:text-wood-400 transition-colors">Início</a>
-          <a href="#portfolio" className="hover:text-wood-400 transition-colors">Projetos</a>
-          <a href="#about" className="hover:text-wood-400 transition-colors">Sobre</a>
-          <a href="#contact" className="hover:text-wood-400 transition-colors">Contato</a>
+          <a href="#hero" onClick={(e) => handleScroll(e, 'hero')} className="hover:text-wood-400 transition-colors">Início</a>
+          <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="hover:text-wood-400 transition-colors">Sobre</a>
+          <a href="#portfolio" onClick={(e) => handleScroll(e, 'portfolio')} className="hover:text-wood-400 transition-colors">Projetos</a>
+          <a href="#contact" onClick={(e) => handleScroll(e, 'contact')} className="hover:text-wood-400 transition-colors">Contato</a>
         </div>
 
         <div className="text-gray-500 text-xs text-center md:text-right">

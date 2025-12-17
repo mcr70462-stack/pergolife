@@ -2,17 +2,24 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          // Using a high quality placeholder representing the "Modern house with pergola" vibe
-          src="https://picsum.photos/1920/1080?random=10"
-          alt="Pergolado de madeira luxuoso"
+          src="/image%20(6).png"
+          alt="Pergolado de madeira luxuoso e área de piscina"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-wood-900/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-wood-900/90"></div>
       </div>
 
       {/* Content */}
@@ -33,6 +40,7 @@ const Hero: React.FC = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a 
             href="#portfolio"
+            onClick={(e) => handleScroll(e, 'portfolio')}
             className="px-8 py-4 bg-wood-600 hover:bg-wood-700 text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 flex items-center gap-2 shadow-xl"
           >
             Ver Nossos Projetos
@@ -40,6 +48,7 @@ const Hero: React.FC = () => {
           </a>
           <a 
             href="#contact"
+            onClick={(e) => handleScroll(e, 'contact')}
             className="px-8 py-4 bg-transparent border-2 border-white text-white hover:bg-white hover:text-wood-900 rounded-full font-bold text-lg transition-all"
           >
             Solicitar Orçamento

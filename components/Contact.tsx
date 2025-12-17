@@ -44,15 +44,16 @@ const Contact: React.FC = () => {
                 </div>
               </a>
 
-               <div className="flex items-center gap-4 p-4 bg-white/5 rounded-lg">
-                <div className="bg-wood-600 p-3 rounded-full">
+               <a href={`tel:${COMPANY_PHONE.replace(/\D/g,'')}`}
+                  className="flex items-center gap-4 p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors group">
+                <div className="bg-wood-600 p-3 rounded-full group-hover:bg-wood-500 transition-colors">
                   <Phone size={24} />
                 </div>
                 <div>
                   <p className="text-sm text-gray-400">Telefone / WhatsApp</p>
                   <p className="font-semibold text-lg">{COMPANY_PHONE}</p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 
